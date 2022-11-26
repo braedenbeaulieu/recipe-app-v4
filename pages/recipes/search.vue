@@ -23,8 +23,7 @@
         </div>
         <div v-else>
             <div v-if="recipes">
-                <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-if="search_term">Showing {{ recipes.length ?? 'all' }} result<span v-if="recipes.length > 1 || recipes.length == 0" >s</span></h2>
-                <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-else-if="recipes.length">{{ recipes.length }} result<span v-if="recipes.length > 1" >s</span> for {{ search_term }}</h2>
+                <h2 class="text-xl font-bold mb-3 mx-3 text-light">{{ search_subtitle }}</h2>
                 <RecipeList>
                     <RecipeListItem v-for="recipe in recipes" :key="recipe.slug" :recipe="recipe"/>
                 </RecipeList>
@@ -49,7 +48,27 @@
     const refresh = () => refreshNuxtData('recipes')
     
     let search_recipes = async (query) => {
+        if(!query) return
         search_term.value = query;
-        refresh()
+        await refresh()
+        get_search_subtitle()
     }
+
+    let search_subtitle = ref('')
+    let get_search_subtitle = () => {
+
+        if(!recipes.value || !recipes.value.length) {
+            if(search_term.value != '') {
+                search_subtitle.value = `No recipes found for ${search_term.value}`
+            } else {
+                search_subtitle.value = 'No recipes found.'
+            }
+            return
+        }
+
+        if(search_term.value != '') {
+            search_subtitle.value = `Found ${recipes.value.length} recipes for ${search_term.value}`
+        }
+    }
+    get_search_subtitle()
 </script>

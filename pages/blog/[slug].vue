@@ -40,7 +40,7 @@
     
     // set up page title
     useHead({
-        titleTemplate: `%s - Blog - ${useHTMLDecode(recipe.value.title)}`,
+        titleTemplate: `%s - Blog - ${useHtmlDecode(recipe.value.title)}`,
     })
 </script>
 

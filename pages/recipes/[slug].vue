@@ -77,7 +77,7 @@
 
     // set up page title
     useHead({
-      titleTemplate: `%s - ${useHTMLDecode(recipe.value.title)}`,
+      titleTemplate: `%s - ${useHtmlDecode(recipe.value.title)}`,
     })
 
     let single_qty_ingredients = recipe.value.ingredients.map((ingredient) => {
