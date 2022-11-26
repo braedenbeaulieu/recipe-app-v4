@@ -57,6 +57,12 @@
                 </div>
             </div>
         </div>
+        <div>
+            <h3>Recommended Recipes</h3>
+            <RecipeGrid>
+                <RecipeGridItem v-for="recipe in recommended_recipes" :key="recipe.id" :recipe="recipe" />
+            </RecipeGrid>
+        </div>
 
         <Notification :open="notification_open" :subtitle="notification_title" :message="notification_message"></Notification>
 
@@ -67,6 +73,7 @@
 <script setup async>
     const router = useRoute()
     const { data: recipe, pending: pending_recipe } = await useFetch(`/api/recipes/${router.params.slug}`)
+    const { data: recommended_recipes, pending: pending_recommended_recipes } = await useFetch(`/api/recipes/search/${router.params.slug}?per_page=3`)
 
     let single_qty_ingredients = recipe.value.ingredients.map((ingredient) => {
         return {

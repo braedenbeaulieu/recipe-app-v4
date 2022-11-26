@@ -13,9 +13,9 @@
             Loading ...
         </div>
         <div v-else>
-            <RecipeGrid>
+            <RecipeMasonryGrid>
                 <RecipeGridItem v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
-            </RecipeGrid>
+            </RecipeMasonryGrid>
         </div>
     </div>
 </template>
