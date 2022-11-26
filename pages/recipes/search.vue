@@ -38,6 +38,11 @@
 </template>
 
 <script setup>
+    // set up page title
+    useHead({
+      titleTemplate: '%s - Search',
+    })
+
     const route = useRoute()
     let search_term = ref(route.query.s)
     const { data: recipes, pending } = useLazyAsyncData('recipes', () => $fetch(`/api/recipes/search/${search_term.value}?img_size=thumbnail`))

@@ -70,10 +70,15 @@
     </div>
 </template>
 
-<script setup async>
+<script setup>
     const router = useRoute()
     const { data: recipe, pending: pending_recipe } = await useFetch(`/api/recipes/${router.params.slug}?img_size=large`)
     const { data: recommended_recipes, pending: pending_recommended_recipes } = await useFetch(`/api/recipes/?per_page=3&img_size=large&orderby=rand&post__not_in=${recipe.value.id}`)
+
+    // set up page title
+    useHead({
+      titleTemplate: `%s - ${useHTMLDecode(recipe.value.title)}`,
+    })
 
     let single_qty_ingredients = recipe.value.ingredients.map((ingredient) => {
         return {
@@ -96,11 +101,11 @@
     }
 
     let temp_unit = 'F'
-    let date_in_5_days = new Date(new Date().getTime() + 432000000);
-    let visited_before = ref(useCookie('first-time-visiting', {
-        maxAge: 432000000,
-        expires: date_in_5_days
-    }))
+    // let date_in_5_days = new Date(new Date().getTime() + 432000000);
+    // let visited_before = ref(useCookie('first-time-visiting', {
+    //     maxAge: 432000000,
+    //     expires: date_in_5_days
+    // }))
 
     let resolveTime = (mins) => {
         let hours = (mins / 60);
@@ -144,7 +149,6 @@
     }
 
     let getIngredientByName = (name) => {
-        // return true;
         let found_ingredient = false;
 
         recipe.value.ingredients.forEach((ingredient) => {

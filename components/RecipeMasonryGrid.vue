@@ -1,9 +1,9 @@
 <template>
-    <masonry-wall :items="props.recipes" :ssr-columns="3" :column-width="300" :gap="12">
+    <MasonryWall :items="props.recipes" :ssr-columns="3" :column-width="300" :gap="12">
         <template #default="{ item, index }">
             <RecipeMasonryGridItem :recipe="item" />
         </template>
-    </masonry-wall>
+    </MasonryWall>
 </template>
 <script setup lang="ts">
     const props = defineProps<{
