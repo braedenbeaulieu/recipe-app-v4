@@ -1,5 +1,12 @@
 <template>
-	<div class="columns-2 md:columns-3 lg:columns-3 gap-3">
-		<slot />
-	</div>
+    <masonry-wall :items="props.recipes" :ssr-columns="3" :column-width="300" :gap="12">
+        <template #default="{ item, index }">
+            <RecipeMasonryGridItem :recipe="item" />
+        </template>
+    </masonry-wall>
 </template>
+<script setup lang="ts">
+    const props = defineProps<{
+        recipes: Recipe[]|any
+    }>()
+</script>
