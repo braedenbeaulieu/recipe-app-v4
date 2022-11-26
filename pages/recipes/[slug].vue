@@ -58,7 +58,7 @@
             </div>
         </div>
         <div>
-            <h3>Recommended Recipes</h3>
+            <h2 class="text-4xl mt-4 mb-4 font-bold md:text-left">For Next Time</h2>
             <RecipeGrid>
                 <RecipeGridItem v-for="recipe in recommended_recipes" :key="recipe.id" :recipe="recipe" />
             </RecipeGrid>
@@ -72,8 +72,8 @@
 
 <script setup async>
     const router = useRoute()
-    const { data: recipe, pending: pending_recipe } = await useFetch(`/api/recipes/${router.params.slug}`)
-    const { data: recommended_recipes, pending: pending_recommended_recipes } = await useFetch(`/api/recipes/search/${router.params.slug}?per_page=3`)
+    const { data: recipe, pending: pending_recipe } = await useFetch(`/api/recipes/${router.params.slug}?img_size=large`)
+    const { data: recommended_recipes, pending: pending_recommended_recipes } = await useFetch(`/api/recipes/?per_page=3&img_size=large&orderby=rand&post__not_in=${recipe.value.id}`)
 
     let single_qty_ingredients = recipe.value.ingredients.map((ingredient) => {
         return {

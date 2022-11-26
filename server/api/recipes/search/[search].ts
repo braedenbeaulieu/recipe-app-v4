@@ -10,8 +10,6 @@ export default defineEventHandler(async (event) => {
         api_url += `&${parsed_param[0]}=${parsed_param[1]}`
     })
 
-    console.log(api_url)
-
     let recipes: Recipe[] = []
     
     await fetch(api_url)

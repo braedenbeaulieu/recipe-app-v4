@@ -5,7 +5,7 @@
             <div class="animate-pulse mx-4 h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mt-6 mb-4"></div>
             <div class="grid grid-cols-1 divide-y divide-gray-400">
                 <div v-for="index in 6" :key="index" role="status" class="py-1 sm:py-4 px-3 flex items-center space-y-4 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center">
-                    <div class="flex-shrink-0 rounded-full flex justify-center items-center bg-gray-300 sm:w-96 dark:bg-gray-700">
+                    <div class="flex-shrink-0 rounded-full flex justify-center items-center bg-gray-300 dark:bg-gray-700">
                         <div class="p-1 w-12 h-12 rounded-full text-gray-200"></div>
                     </div>
                     <div class="flex-1 min-w-0 px-4">
@@ -23,7 +23,7 @@
         </div>
         <div v-else>
             <div v-if="recipes">
-                <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-if="search_term">Showing {{ recipes.length }} result<span v-if="recipes.length > 1" >s</span></h2>
+                <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-if="search_term">Showing {{ recipes.length ?? 'all' }} result<span v-if="recipes.length > 1 || recipes.length == 0" >s</span></h2>
                 <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-else-if="recipes.length">{{ recipes.length }} result<span v-if="recipes.length > 1" >s</span> for {{ search_term }}</h2>
                 <RecipeList>
                     <RecipeListItem v-for="recipe in recipes" :key="recipe.slug" :recipe="recipe"/>
@@ -40,7 +40,7 @@
 <script setup>
     const route = useRoute()
     let search_term = ref(route.query.s)
-    const { data: recipes, pending } = useLazyAsyncData('recipes', () => $fetch(`/api/recipes/search/${search_term.value}`))
+    const { data: recipes, pending } = useLazyAsyncData('recipes', () => $fetch(`/api/recipes/search/${search_term.value}?img_size=thumbnail`))
     const refresh = () => refreshNuxtData('recipes')
     
     let search_recipes = async (query) => {

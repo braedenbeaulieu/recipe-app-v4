@@ -14,13 +14,13 @@
         </div>
         <div v-else>
             <RecipeMasonryGrid>
-                <RecipeGridItem v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
+                <RecipeMasonryGridItem v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
             </RecipeMasonryGrid>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-    const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes')
-    const { data: featured_recipe, pending: pending_featured_recipe } = await useFetch('/api/recipes/featured')
+    const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes?img_size=large')
+    const { data: featured_recipe, pending: pending_featured_recipe } = await useFetch('/api/recipes/featured?img_size=full')
 </script>

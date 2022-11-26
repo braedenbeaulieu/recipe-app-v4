@@ -3,6 +3,13 @@ export default defineEventHandler(async (event) => {
     
     let api_url = `https://alpha.braedenbeaulieu.ca/wp-json/bb_recipes/v1/recipe?key=${config.RECIPES_API_KEY}&per_page=1&slug=${event.context.params.slug}`
 
+    // @ts-ignore
+    let query_params = (event.node.req.originalUrl.split('?').pop()).split('&')
+    query_params = query_params.forEach((param: string) => {
+        let parsed_param = param.split('=')
+        api_url += `&${parsed_param[0]}=${parsed_param[1]}`
+    })
+
     let recipes: Recipe[] = []
     
     await fetch(api_url)
