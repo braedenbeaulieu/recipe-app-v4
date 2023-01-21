@@ -1,5 +1,5 @@
 <template>
-    <div class="relative mb-4 before:content-[''] before:rounded-md before:absolute before:inset-0 before:bg-black before:bg-opacity-20">
+    <div class="relative before:content-[''] before:rounded-md before:absolute before:inset-0 before:bg-black before:bg-opacity-20">
         <NuxtLink :to="recipe_link">
             <div class="h-64">
                 <img class="rounded-lg object-cover w-full h-full" :src="props.recipe.featured_image" :alt="props.recipe.featured_image_alt" />
