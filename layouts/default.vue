@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-hidden position-relative bg-[#f5f3f0] min-h-screen">
+    <div class="overflow-hidden relative bg-[#f5f3f0] min-h-screen">
         <Header />
         <div class="mb-6 max-w-[1100px] mx-auto px-4">
             <slot />

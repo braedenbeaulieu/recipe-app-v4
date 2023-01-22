@@ -4,10 +4,10 @@
             <img class="rounded-lg" :src="props.recipe.featured_image" :alt="props.recipe.featured_image_alt" />
             <div class="absolute inset-0 p-2 md:p-4 text-white flex flex-col">
                 <div class="relative bg-black/30 shadow-lg p-2 rounded-md">
-                    <h1 class="text-2xl md:text-3xl font-bold" v-html="props.recipe.title"></h1>
+                    <h1 class="text-lg sm:text-2xl md:text-3xl font-bold" v-html="props.recipe.title"></h1>
                     <p class="font-sm font-light hidden md:inline mt-3" v-html="props.recipe.description"></p>
                 </div>
-                <div class="mt-auto flex flex-wrap -mb-1">
+                <div class="hidden sm:flex mt-auto flex-wrap -mb-1">
                     <NuxtLink
                         v-for="tag in props.recipe.tags" :key="recipe.id"
                         :to="`/recipes/search?s=${tag}`"

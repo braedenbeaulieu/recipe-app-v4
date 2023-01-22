@@ -14,9 +14,9 @@
         </div>
         <div v-else>
             <RecipeMasonryGrid :recipes="recipes" />
-                <!-- <RecipeMasonryGridItem v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
-            </RecipeMasonryGrid> -->
         </div>
+
+        <CTAModal :open="popup_open" />
     </div>
 </template>
 
@@ -27,4 +27,6 @@
     
     const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes?img_size=large')
     const { data: featured_recipe, pending: pending_featured_recipe } = await useFetch('/api/recipes/featured?img_size=full')
+
+    let popup_open = true
 </script>

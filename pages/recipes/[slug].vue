@@ -101,11 +101,6 @@
     }
 
     let temp_unit = 'F'
-    // let date_in_5_days = new Date(new Date().getTime() + 432000000);
-    // let visited_before = ref(useCookie('first-time-visiting', {
-    //     maxAge: 432000000,
-    //     expires: date_in_5_days
-    // }))
 
     let resolveTime = (mins) => {
         let hours = (mins / 60);

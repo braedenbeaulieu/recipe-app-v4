@@ -21,7 +21,7 @@ export default defineNuxtConfig({
                     'charset': 'utf-8'
                 }
             ],
-            title: 'Recipes',
+            title: 'Recipedia',
         },
         pageTransition: { 
             name: 'page', mode: 'out-in' 
