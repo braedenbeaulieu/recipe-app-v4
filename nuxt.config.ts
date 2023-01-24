@@ -31,6 +31,10 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
     ],
     runtimeConfig: {
-        RECIPES_API_KEY: process.env.RECIPES_API_KEY
+        RECIPES_API_KEY: process.env.RECIPES_API_KEY,
+        GTM_KEY: 'asdasd'// process.env.GTM_KEY,
     },
+    plugins: [
+        { src: '~/plugins/vue-gtag.client.ts', mode: 'client' }
+    ]
 })

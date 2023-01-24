@@ -54,6 +54,5 @@ export default defineEventHandler(async (event) => {
                 })
             }
         })
-
     return recipes[0]
 })
