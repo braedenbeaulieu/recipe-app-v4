@@ -29,6 +29,7 @@ export default defineEventHandler(async (event) => {
                         has_blog: false,
                         tags: raw_recipe.tags,
                         meta: {
+                            video_url: raw_recipe.meta.video_url,
                             difficulty: raw_recipe.meta.difficulty,
                             servings: raw_recipe.meta.servings,
                             prep_time: raw_recipe.meta.prep_time,

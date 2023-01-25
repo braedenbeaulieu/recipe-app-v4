@@ -22,8 +22,10 @@
             </div>
         </div>
         <div v-else>
-            <div v-if="recipes">
-                <h2 class="text-xl font-bold mb-3 mx-3 text-light">{{ search_subtitle }}</h2>
+            <div v-if="Array.isArray(recipes)">
+                <ClientOnly>
+                    <h2 class="text-xl font-bold mb-3 mx-3 text-light">{{ search_subtitle }}</h2>
+                </ClientOnly>
                 <RecipeList>
                     <RecipeListItem v-for="recipe in recipes" :key="recipe.slug" :recipe="recipe"/>
                 </RecipeList>
@@ -56,7 +58,6 @@
 
     let search_subtitle = ref('')
     let get_search_subtitle = () => {
-
         if(!recipes.value || !recipes.value.length) {
             if(search_term.value != '') {
                 search_subtitle.value = `No recipes found for ${search_term.value}`
@@ -70,5 +71,6 @@
             search_subtitle.value = `Found ${recipes.value.length} recipes for ${search_term.value}`
         }
     }
+    await refresh()
     get_search_subtitle()
 </script>

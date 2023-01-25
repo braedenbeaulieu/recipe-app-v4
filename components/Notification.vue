@@ -1,12 +1,12 @@
 <template>
-    <div class="notification p-3 w-full mx-auto max-w-xs text-gray-900 bg-white rounded-lg shadow" :class="{ open: open }" role="alert">
+    <div class="notification p-4 w-full mx-auto max-w-xs text-gray-900 bg-white rounded-lg shadow" :class="{ open: open }" role="alert">
         <div class="mb-1" v-if="props.title">
             <span class="text-sm font-semibold text-gray-900">{{ props.title }}</span>
         </div>
         <div>
             <div class="text-sm font-normal">
                 <div class="text-sm font-semibold text-gray-900">
-                    <div class="text-lg font-normal" v-html="props.subtitle"></div> 
+                    <div class="text-2xl font-bold" v-html="props.subtitle"></div> 
                     <span class="text-sm font-medium text-[#1a4e48]" v-html="props.message"></span>   
                 </div>
             </div>

@@ -13,7 +13,9 @@
             Loading ...
         </div>
         <div v-else>
-            <RecipeMasonryGrid :recipes="recipes" />
+            <ClientOnly>
+                <RecipeMasonryGrid :recipes="recipes" />
+            </ClientOnly>
         </div>
 
         <CTAModal :open="popup_open" />

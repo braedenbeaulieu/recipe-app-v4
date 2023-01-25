@@ -43,17 +43,17 @@
                 </ul>
             </div>
             <div>
+                <div class="mb-8 ml-12" v-if="recipe.meta.cooks_note">
+                    <h3 class="text-2xl mb-2 font-bold">Cook's Note</h3>
+                    <p class="">{{ recipe.meta.cooks_note }}</p>
+                </div>
+
                 <h3 class="text-2xl md:mt-0 mb-2 font-bold ml-[50px]">Directions</h3>
                 <div class="mb-8" >
                     <div class="flex mb-4" v-for="(direction, index) in recipe.directions" :key="index">
                         <span class="block text-4xl font-bold w-[50px]">{{ parseInt(index) + 1 }}.</span>
                         <p @click="maybeDisplayIngredient" class="leading-8 mb-1 w-a w-[calc(100%_-_50px)]" v-html="resolveDirection(direction.direction)"></p>
                     </div>
-                </div>
-
-                <div class="mb-8 ml-12" v-if="recipe.meta.cooks_note">
-                    <h3 class="text-2xl mt-8 mb-2 font-bold">Cook's Note</h3>
-                    <p class="">{{ recipe.meta.cooks_note }}</p>
                 </div>
             </div>
         </div>

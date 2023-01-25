@@ -12,6 +12,7 @@ declare global {
         has_blog?: boolean,
         tags?: string[],
         meta?: {
+            video_url?: string|undefined,
             difficulty?: string|undefined,
             servings?: string|undefined,
             prep_time?: string|undefined,
