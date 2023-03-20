@@ -10,7 +10,7 @@
             <RecipeMasonryGrid :recipes="recipes" />
         </div>
 
-        <CTAModal :open="popup_open" />
+        <!-- <CTAModal :open="popup_open" /> -->
     </div>
 </template>
 
@@ -21,5 +21,5 @@
     
     const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes?img_size=large')
 
-    let popup_open = true
+    // let popup_open = true
 </script>

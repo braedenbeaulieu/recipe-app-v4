@@ -13,12 +13,10 @@
             Loading ...
         </div>
         <div v-else>
-            <ClientOnly>
-                <RecipeMasonryGrid :recipes="recipes" />
-            </ClientOnly>
+            <RecipeMasonryGrid :recipes="recipes" />
         </div>
 
-        <CTAModal :open="popup_open" />
+        <!-- <CTAModal :open="popup_open" /> -->
     </div>
 </template>
 
@@ -30,5 +28,5 @@
     const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes?img_size=large')
     const { data: featured_recipe, pending: pending_featured_recipe } = await useFetch('/api/recipes/featured?img_size=full')
 
-    let popup_open = true
+    // let popup_open = true
 </script>

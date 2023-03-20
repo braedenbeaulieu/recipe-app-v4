@@ -32,7 +32,7 @@
 <style>
     .grocery-list {
         position: fixed;
-        bottom: -100vh;
+        bottom: -140vh;
         right: 0;
         left: 0;
         transition: bottom .15s;
