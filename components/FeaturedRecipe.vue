@@ -15,7 +15,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class="flex sm:col-span-5 rounded-lg overflow-hidden">
+            <div class="flex sm:col-span-5 rounded-lg overflow-hidden max-h-[650px]">
                 <NuxtLink :to="recipe_link">
                     <img :src="props.recipe.featured_image" :alt="props.recipe.featured_image_alt">
                 </NuxtLink>

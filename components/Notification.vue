@@ -1,5 +1,5 @@
 <template>
-    <div class="notification p-4 w-full mx-auto max-w-xs text-gray-900 bg-white rounded-lg shadow" :class="{ open: open }" role="alert">
+    <div class="notification p-4 w-full mx-auto max-w-xs text-gray-900 bg-white rounded-lg shadow-lg" :class="{ open: open }" role="alert">
         <div class="mb-1" v-if="props.title">
             <span class="text-sm font-semibold text-gray-900">{{ props.title }}</span>
         </div>

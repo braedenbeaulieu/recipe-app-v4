@@ -1,7 +1,9 @@
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
+    
+    let query = getQuery(event)
 
-    let api_url = `https://alpha.braedenbeaulieu.ca/wp-json/bb_recipes/v1/search?key=${config.RECIPES_API_KEY}&s=${event.context.params.search}`
+    let api_url = `https://alpha.braedenbeaulieu.ca/wp-json/bb_recipes/v1/search?key=${config.RECIPES_API_KEY}&s=${query.s}&img_size=${query.img_size}`
 
     // @ts-ignore
     let query_params = (event.node.req.originalUrl.split('?').pop()).split('&')
@@ -19,6 +21,21 @@ export default defineEventHandler(async (event) => {
             if(data.results) {
                 // @ts-ignore
                 data.results.forEach(raw_recipe => {
+                    let is_featured = false
+                    if(raw_recipe.tags && Object.values(raw_recipe.tags).length > 0) {
+                        if(Object.values(raw_recipe.tags).indexOf('Featured') >= 0) {
+                            raw_recipe.tags = Object.values(raw_recipe.tags).splice(Object.values(raw_recipe.tags).indexOf('Featured'), 1)
+                
+                            let tags_array = Object.values(raw_recipe.tags)
+                            let featured_index = tags_array.indexOf('Featured')
+                            if(featured_index !== null || featured_index !== undefined) {
+                                tags_array.splice(featured_index, 1)
+                                is_featured = true
+                            }
+                            raw_recipe.tags = tags_array
+                        }
+                    }
+
                     let recipe: Recipe = {
                         id: raw_recipe.id,
                         title: raw_recipe.title,
@@ -27,6 +44,7 @@ export default defineEventHandler(async (event) => {
                         featured_image: raw_recipe.featured_image[0],
                         featured_image_alt: raw_recipe.featured_image_alt,
                         has_blog: false,
+                        is_featured: is_featured,
                         tags: raw_recipe.tags,
                         meta: {
                             video_url: raw_recipe.meta.video_url,

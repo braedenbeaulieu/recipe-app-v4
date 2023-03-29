@@ -46,11 +46,16 @@
 
     const route = useRoute()
     let search_term = ref(route.query.s)
-    const { data: recipes, pending } = useLazyAsyncData('recipes', () => $fetch(`/api/recipes/search/${search_term.value}?img_size=thumbnail`))
+    // let api_url = '/api/recipes/search?img_size=thumbnail'
+    // if(search_term.value != '') {
+    //     api_url = `/api/recipes/search/?s=${search_term.value}&img_size=thumbnail`
+    // }
+
+    const { data: recipes, pending } = useLazyAsyncData('recipes', () => $fetch(`/api/recipes/search/?img_size=thumbnail&s=${search_term.value}`))
+
     const refresh = () => refreshNuxtData('recipes')
     
     let search_recipes = async (query) => {
-        if(!query) return
         search_term.value = query;
         await refresh()
         get_search_subtitle()
@@ -59,7 +64,7 @@
     let search_subtitle = ref('')
     let get_search_subtitle = () => {
         if(!recipes.value || !recipes.value.length) {
-            if(search_term.value != '') {
+            if(search_term.value != '' && search_term.value != undefined) {
                 search_subtitle.value = `No recipes found for ${search_term.value}`
             } else {
                 search_subtitle.value = 'No recipes found.'
@@ -67,8 +72,10 @@
             return
         }
 
-        if(search_term.value != '') {
+        if(search_term.value != '' && search_term.value != undefined) {
             search_subtitle.value = `Found ${recipes.value.length} recipes for ${search_term.value}`
+        } else {
+            search_subtitle.value = ''
         }
     }
     await refresh()

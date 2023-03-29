@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-hidden relative bg-[#f5f3f0] min-h-screen">
+    <div class="overflow-hidden relative min-h-screen">
         <Header />
         <div class="mb-6 max-w-[1100px] mx-auto px-4">
             <slot />
@@ -27,6 +27,8 @@
 
     html {
         background-color: #f5f3f0;
+        /* background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
     }
 
 	a {

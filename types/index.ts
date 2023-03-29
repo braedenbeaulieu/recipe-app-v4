@@ -10,6 +10,7 @@ declare global {
         featured_image?: string,
         featured_image_alt?: string,
         has_blog?: boolean,
+        is_featured?: boolean,
         tags?: string[],
         meta?: {
             video_url?: string|undefined,

@@ -33,4 +33,10 @@
     if(props.recipe.has_blog !== false) {
         recipe_link.value = `/blog/${props.recipe.slug}`
     }
+    
+    if(props.recipe.tags && props.recipe.tags.length > 0) {
+        if(props.recipe.tags.indexOf('Featured') >= 0) {
+            props.recipe.tags = props.recipe.tags.splice(props.recipe.tags.indexOf('Featured'), 1)
+        }
+    }
 </script>
