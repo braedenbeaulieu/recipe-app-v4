@@ -133,7 +133,7 @@
         let time = `${rminutes}m`;
 
         if(rhours > 0) {
-            time = `${rhours}h 13m`
+            time = `${rhours}h`
             if(minutes > 0) {
                 time += `${rminutes}m`
             }
