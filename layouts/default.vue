@@ -27,8 +27,11 @@
 
     html {
         background-color: #f5f3f0;
-        /* background-color: #4158D0;
-        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
+        background-image: linear-gradient(143deg, #f5f3f0 0%, rgb(255, 221, 185) 100%); 
+        /* 
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); 
+        */
     }
 
 	a {
