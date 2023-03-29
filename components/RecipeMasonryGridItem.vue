@@ -1,5 +1,5 @@
 <template>
-    <div class="relative before:content-[''] before:rounded-md before:absolute before:inset-0 before:bg-black before:bg-opacity-20">
+    <div class="relative before:content-[''] before:rounded-lg before:absolute before:inset-0 before:bg-black before:bg-opacity-20">
         <NuxtLink :to="recipe_link">
             <div class="h-64">
                 <img class="rounded-lg object-cover w-full h-full" :src="props.recipe.featured_image" :alt="props.recipe.featured_image_alt" />
@@ -20,7 +20,7 @@
                     <NuxtLink
                         v-for="tag in props.recipe.tags" :key="recipe.id"
                         :to="`/recipes/search?s=${tag}`"
-                        class="bg-white bg-opacity-80 py-1 px-4 mr-1 mb-1 text-xs rounded-md text-black hover:bg-[#1a4e48] hover:text-white transition-colors"
+                        class="bg-white bg-opacity-80 py-1 px-4 mr-1 mb-1 text-xs rounded-full text-black hover:bg-[#1a4e48] hover:text-white transition-colors"
                     >
                         #{{ tag }}
                     </NuxtLink>
