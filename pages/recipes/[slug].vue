@@ -2,7 +2,7 @@
     <div ref="container">
         <div class="grid md:grid-cols-2 gap-8 text-black">
             <div>
-                <div class="object-cover rounded-2xl max-h-[340px] overflow-hidden shadow-xl">
+                <div class="object-cover rounded-2xl max-h-[500px] overflow-hidden shadow-xl">
                     <img :src="recipe.featured_image" :alt="recipe.featured_image_alt">
                 </div>
                 <h1 class="text-4xl my-4 font-bold text-center md:text-left" v-html="recipe.title"></h1>
