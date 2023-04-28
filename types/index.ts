@@ -25,7 +25,14 @@ declare global {
                 temp?: string|undefined,
             }
         },
-        ingredients?: any[],
-        directions?: any[],
+        ingredients?: Ingredient[],
+        directions?: String[],
+    }
+
+    interface Ingredient {
+        qty?: string,
+        unit?: string,
+        name?: string,
+        modifier?: string
     }
 }

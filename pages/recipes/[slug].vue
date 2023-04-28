@@ -89,7 +89,7 @@
                 <h3 class="text-2xl md:mt-0 mb-2 font-bold ml-[50px]">Directions</h3>
                 <div class="mb-8" >
                     <div class="flex mb-4" v-for="(direction, index) in recipe.directions" :key="index">
-                        <span class="block text-4xl font-bold w-[50px]">{{ parseInt(index) + 1 }}.</span>
+                        <span class="block text-4xl font-bold w-[50px]">{{ index + 1 }}.</span>
                         <p @click="maybeDisplayIngredient" class="leading-8 mb-1 w-a w-[calc(100%_-_50px)]" v-html="resolveDirection(direction.direction)"></p>
                     </div>
                 </div>
@@ -113,28 +113,43 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
     const router = useRoute()
-    const { data: recipe, pending: pending_recipe } = await useFetch(`/api/recipes/${router.params.slug}?img_size=large`)
-    const { data: recommended_recipes, pending: pending_recommended_recipes } = await useFetch(`/api/recipes/?per_page=6&img_size=large&orderby=rand&post__not_in=${recipe.value.id}`)
-
-    // set up page title
-    useHead({
-      titleTemplate: `%s - ${useHtmlDecode(recipe.value.title)}`,
+    const { 
+        //@ts-ignore
+        data: recipe, 
+        //@ts-ignore
+        pending: pending_recipe 
+    } = await useFetch<Recipe>(
+        `/api/recipes/${router.params.slug}?img_size=large`
+    ).catch(err => {
+        console.error(err)
     })
 
-    let single_qty_ingredients = recipe.value.ingredients.map((ingredient) => {
+    const {
+        data: recommended_recipes,
+        pending: pending_recommended_recipes,
+    } = await useFetch<Recipe[]>(
+        `/api/recipes/?per_page=6&img_size=large&orderby=rand&post__not_in=${recipe.value.id}`
+    )
+
+    useHead({
+        titleTemplate: `%s - ${useHtmlDecode(recipe.value.title)}`,
+    })
+
+    let single_qty_ingredients = recipe.value.ingredients.map((ingredient: Ingredient): Ingredient => {
         return {
-            name: ingredient.name, 
-            qty: parseFloat(ingredient.qty) / parseFloat(recipe.value.meta.servings)
+            name: ingredient.name,
+            qty: (parseFloat(ingredient.qty ? ingredient.qty : '0') / parseFloat(recipe.value.meta.servings)).toFixed(2)
         }
     })
-    
+
+
     let recipe_servings = ref(recipe.value.meta.servings)
     let notification_title = ref('')
     let notification_message = ref('')
     let notification_open = ref(false)
-    
+
     let grocery_list_open = ref(false)
     let openGroceryList = () => {
         grocery_list_open.value = true
@@ -142,10 +157,9 @@
     let closeGroceryList = () => {
         grocery_list_open.value = false
     }
-
     let temp_unit = 'F'
 
-    let resolveTime = (mins) => {
+    let resolveTime = (mins: number) => {
         let hours = (mins / 60);
         let rhours = Math.floor(hours);
         let minutes = (hours - rhours) * 60;
@@ -163,21 +177,25 @@
         return time
     }
 
-    let maybeDisplayIngredient = (e) => {
-        if(e.target.classList.contains('ingredient-popup')) {
-            displayIngredient(e.target.dataset.name, 5000)
+    let maybeDisplayIngredient = (e: Event) => {
+        let target = e.target instanceof HTMLElement ? e.target : null
+        if(target?.classList.contains('ingredient-popup')) {
+            let ingredient_name = target.dataset.name
+            if(ingredient_name) {
+                displayIngredient(ingredient_name, 5000)
+            }
         }
     }
 
-    let timer;
-    let displayIngredient = (ingredient_name, show_for = -1) => {
-        let ingredient = getIngredientByName(ingredient_name)
+    let timer: NodeJS.Timeout = {} as NodeJS.Timeout;
+    let displayIngredient = (ingredient_name: string, show_for: number = -1) => {
+        let ingredient: Ingredient = getIngredientByName(ingredient_name)
 
         notification_open.value = true
-        notification_title.value = ingredient.name
+        notification_title.value = ingredient.name ? ingredient.name : ''
         notification_message.value = `${ingredient.qty} ${ingredient.unit} ${ingredient.name}`
         if(ingredient.modifier) notification_message.value += `, <span v-if="ingredient.modifier">${ingredient.modifier}</span>`
-        const runTimer = (duration) => {
+        const runTimer = (duration: number) => {
             timer = setTimeout(() => {
                 notification_open.value = false
             }, duration);
@@ -189,53 +207,47 @@
         }
     }
 
-    let getIngredientByName = (name) => {
-        let found_ingredient = false;
-
-        recipe.value.ingredients.forEach((ingredient) => {
-            if(ingredient.name == name) {
-                found_ingredient = ingredient
+    let getIngredientByName = (name: string): Ingredient => {
+        if(!Array.isArray(recipe.value.ingredients)) return {}
+        recipe.value.ingredients.find((ingredient: Ingredient) => {
+            if(ingredient.name === name) {
+                return ingredient
             }
         })
 
-        return found_ingredient
+        return {}
     }
+        
     
-    let resolveTemp = (oven) => {
+    let resolveTemp = (oven: {temp: string, temp_unit: string}) => {
         if(temp_unit == oven.temp_unit) {
             return `${oven.temp}°${oven.temp_unit}`
         }
     }
 
-    let resolveDirection = (direction) => {
-        // This will find anything surrounded by square brackets
-        // let regex = /\[(.*?)\]/g
-
-        // Find all of the ingredients in this direction
-        let ingredients = []
-        recipe.value.ingredients.forEach(ingredient => {
-            let match = direction.match(ingredient.name)
-
+    const resolveDirection = (direction: string): string => {
+        let ingredients: Ingredient[] = [];
+        for(let ingredient of recipe.value.ingredients) {
+            let match: string[]|null = ingredient.hasOwnProperty('name') ? direction.match(ingredient.name) : null
             if(match) {
-                ingredients.push(ingredient.name)
+                ingredients.push(ingredient.name);
             }
-        })
-
-        if(ingredients) {
-            ingredients.forEach(ingredient => {
-                // get the ingredient
-                let found_ingredient = getIngredientByName(ingredient) ?? false
-
-                // add a span around the recipe with some data attributes
-                if(found_ingredient) {
-                    direction = direction.replace(ingredient, `<span class="ingredient-popup bg-[#FFFFFF] px-3 py-1 rounded-lg cursor-pointer inline-block hover:bg-[#1a4e48] hover:text-white my-1 bdorder-2 bdorder-[transparent] transition-colors" data-name="${found_ingredient.name}" >${ingredient}</span>`)
-
-                }
-            });
         }
 
-        return direction
-    }
+        if(ingredients) {
+            for(let ingredient of recipe.value.ingredients) {
+                let found_ingredient: Ingredient = getIngredientByName(ingredient)
+                if(Object.keys(found_ingredient).length > 0) {
+                    direction = direction.replace(
+                        ingredient,
+                        `<span class="ingredient-popup bg-[#FFFFFF] px-3 py-1 rounded-lg cursor-pointer inline-block hover:bg-[#1a4e48] hover:text-white my-1 bdorder-2 bdorder-[transparent] transition-colors" data-name=\"${found_ingredient.name}" >${ingredient}</span>`
+                    )
+                }
+            }
+        }
+
+        return direction;
+    };
 
     let updateIngredientQty = (action = 'increment') => {
         if(action == 'increment') {
@@ -246,24 +258,27 @@
             return
         }
 
-        recipe.value.ingredients.forEach(reactive_ingredient => {
+        for(let reactive_ingredient of recipe.value.ingredients) {
             let temp = reactive_ingredient.qty
             let single_serving
-            single_qty_ingredients.forEach(ingt => {
+            for(let ingt of single_qty_ingredients) {
                 if(ingt.name == reactive_ingredient.name) {
-                    single_serving = parseFloat(ingt.qty)
+                    single_serving = ingt.qty ? parseFloat(ingt.qty) : 1
+                    break
                 }
-            })
-
-            if(action == 'increment') {
-                reactive_ingredient.qty = parseFloat(temp) + single_serving
-            } else if(action == 'decrement') {
-                reactive_ingredient.qty = parseFloat(temp) - single_serving
             }
-        })
+
+            if(single_serving) {
+                if(action == 'increment') {
+                    reactive_ingredient.qty = parseFloat(temp) + single_serving
+                } else if(action == 'decrement') {
+                    reactive_ingredient.qty = parseFloat(temp) - single_serving
+                }
+            }
+        }
     }
 
-    let resolveIngredientQty = (value) => {
+    let resolveIngredientQty = (value: string|number): string => {
         let whole = value.toString().split('.')[0]
         if(whole == '0') whole = ''
         let decimal = value.toString().split('.')[1]
@@ -285,8 +300,8 @@
                 return whole + ' 1/8'
             case '875':
                 return whole + ' 7/8'
+            default: 
+                return whole
         }
-
-        return value
     }
 </script>
