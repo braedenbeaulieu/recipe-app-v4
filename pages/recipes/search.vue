@@ -38,25 +38,20 @@
     </div>
 </template>
 
-<script setup>
-    // set up page title
+<script lang="ts" setup>
     useHead({
-      titleTemplate: '%s - Search',
+        titleTemplate: '%s - Search',
     })
 
     const route = useRoute()
     let search_term = ref(route.query.s)
-    // let api_url = '/api/recipes/search?img_size=thumbnail'
-    // if(search_term.value != '') {
-    //     api_url = `/api/recipes/search/?s=${search_term.value}&img_size=thumbnail`
-    // }
 
     const { data: recipes, pending } = useLazyAsyncData('recipes', () => $fetch(`/api/recipes/search/?img_size=thumbnail&s=${search_term.value}`))
 
     const refresh = () => refreshNuxtData('recipes')
     
-    let search_recipes = async (query) => {
-        search_term.value = query;
+    let search_recipes = async (query: string) => {
+        search_term.value = query
         await refresh()
         get_search_subtitle()
     }

@@ -27,7 +27,7 @@
     let search = (e) => {
         e.preventDefault()
         
-        if(router.currentRoute.value.name != 'recipes-search') {
+        if(router.currentRoute.value.name !== 'recipes-search') {
             window.location.href = window.location.origin + `/recipes/search/?s=${search_query.value}`
             return
         }

@@ -14,12 +14,10 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
     useHead({
       titleTemplate: '%s - All Recipes',
     })
     
     const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes?img_size=large')
-
-    // let popup_open = true
 </script>

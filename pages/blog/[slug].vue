@@ -37,8 +37,7 @@
 
 <script setup>
     const { data: recipe, pending: pending_recipe } = await useFetch(`/api/recipes/${useRoute().params.slug}?includes_content=true`)
-    
-    // set up page title
+
     useHead({
         titleTemplate: `%s - Blog - ${useHtmlDecode(recipe.value.title)}`,
     })
