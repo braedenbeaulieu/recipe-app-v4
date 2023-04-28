@@ -1,3 +1,3 @@
 # Recipe Website
 
-recipes.braedenbeaulieu.ca
+Check out the website [here](https://recipes.braedenbeaulieu.ca)
