@@ -21,8 +21,6 @@
     
     const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes?img_size=large')
 
-    console.log(recipes.value)
-
     const { data: featured_recipe, pending: pending_featured_recipe } = await useFetch('/api/recipes/featured?img_size=full')
     // let popup_open = true
 </script>
