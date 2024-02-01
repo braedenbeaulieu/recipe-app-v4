@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     },
     modules: [
         '@vueuse/nuxt',
-        '@nuxt/content'
+        '@nuxt/content',
+        '@nuxthq/studio'
     ],
 })
