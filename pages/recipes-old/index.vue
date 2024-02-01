@@ -7,10 +7,8 @@
             Loading ...
         </div>
         <div v-else>
-            <RecipeMasonryGrid :recipes="recipes" />
+            <RecipeGrid :recipes="recipes" />
         </div>
-
-        <!-- <CTAModal :open="popup_open" /> -->
     </div>
 </template>
 
