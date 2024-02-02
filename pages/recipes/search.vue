@@ -63,25 +63,12 @@
 
     const route = useRoute()
     let search_term = ref(route.query.search)
-
-    // const miniSearchOptions = defineMiniSearchOptions({
-    //     fields: ['title', 'description', 'tags']
-    // })
-
-    // let things = await searchContent(search_term)
-    // console.log(things.value)
-
-    // const { data: recipes, pending } = await useAsyncData('recipes', () => queryContent('/recipes').find())
-    // const { data: recipes, pending } = await useAsyncData('recipes', () => queryContent('recipes').where({
-    //     $or: [
-    //         title: { $regex: `/${search_term}/ig` }, 
-    //         description: { $regex: `/${search_term}/ig` }
-    //     ]
-    // }))
+    
     const { data: recipes, pending: pending_recipes } = await useAsyncData('recipes', () => {
         return queryContent('recipes')
-            // .where({ title: `/.*${search_term.value?.toString()}.*/` })
-            .where({ title: search_term.value?.toString() })
+            .where({ title: {
+                $regex: `/.*${search_term.value?.toString()}.*/`
+            } })
             .where({ _draft: false })
             .find()
     })
