@@ -8,8 +8,8 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxthq/studio": "^1.0.10",
     "@nuxt/content": "^2.11.0",
+    "@nuxthq/studio": "^1.0.10",
     "@vueuse/core": "^9.5.0",
     "@vueuse/nuxt": "^9.5.0",
     "autoprefixer": "^10.4.13",

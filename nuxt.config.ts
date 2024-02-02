@@ -1,5 +1,10 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+    modules: [
+        '@vueuse/nuxt',
+        '@nuxt/content',
+        '@nuxthq/studio'
+    ],
     typescript: {
         shim: false
     },
@@ -27,9 +32,10 @@ export default defineNuxtConfig({
             name: 'page', mode: 'out-in' 
         }
     },
-    modules: [
-        '@vueuse/nuxt',
-        '@nuxt/content',
-        '@nuxthq/studio'
-    ],
+    content: {
+        highlight: {
+          // Theme used in all color schemes.
+          theme: 'github-light'
+        }
+    }
 })

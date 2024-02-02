@@ -10,13 +10,13 @@
                     <p class="font-sm font-light hidden md:inline mt-3" v-html="props.recipe.description"></p>
                 </div>
                 <div class="mt-auto flex flex-wrap -mb-1">
-                    <NuxtLink
+                    <!-- <NuxtLink
                         v-for="tag in props.recipe.tags" :key="recipe.id"
                         :to="`/recipes/search?s=${tag}`"
                         class="bg-white bg-opacity-80 py-1 px-4 mr-1 mb-1 text-xs rounded-md text-black hover:bg-[#1a4e48] hover:text-white transition-colors"
                     >
                         #{{ tag }}
-                    </NuxtLink>
+                    </NuxtLink> -->
                 </div>
             </div>
         </NuxtLink>
@@ -29,10 +29,6 @@
     }>()
 
     let recipe_link = ref(`/recipes/${props.recipe.slug}`)
-
-    if(props.recipe.has_blog !== false) {
-        recipe_link.value = `/blog/${props.recipe.slug}`
-    }
     
     if(props.recipe.tags && props.recipe.tags.length > 0) {
         if(props.recipe.tags.indexOf('Featured') >= 0) {
