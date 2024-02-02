@@ -63,11 +63,11 @@
 
     const route = useRoute()
     let search_term = ref(route.query.search)
-    
+
     const { data: recipes, pending: pending_recipes } = await useAsyncData('recipes', () => {
         return queryContent('recipes')
             .where({ title: {
-                $regex: `/.*${search_term.value?.toString()}.*/`
+                $regex: `/.*${search_term.value?.toString()}.*/i`
             } })
             .where({ _draft: false })
             .find()
