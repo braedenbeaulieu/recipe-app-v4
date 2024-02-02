@@ -6,7 +6,7 @@ thumbnail_alt: Pulled Pork
 servings: 6
 prep_time: 15
 cook_time: 300
-cooks_note: Pay close attention, this recipe is unfinished
+cooks_note: Pay close attention that the apple juice doesn't burn to the pot in the first 3 hours of cooking, this recipe is unfinished
 ingredients:
     - qty: 1
       unit: hunk
