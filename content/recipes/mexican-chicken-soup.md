@@ -45,7 +45,7 @@ ingredients:
       modifier: crushed
 
 directions:
-    - add the Taco Seasoning, Black Beans, Corn, Diced Tomatoes, Tomato Paste, Salsa, Chicken Breasts and Chicken Stock to the instant pot. Slow cook this on high for 5 hours.
-    - Remove the chicken from the pot and shred it with a fork the nreturn it to the pot
+    - Add the Taco Seasoning, Black Beans, Corn, Diced Tomatoes, Tomato Paste, Salsa, Chicken Breasts and Chicken Stock to the instant pot. Slow cook this on high for 5 hours.
+    - Remove the chicken from the pot and shred it with a fork then return it to the pot
     - Serve with Sour Cream, Tex-Mex Cheese, and Tortilla Chips
 ---
