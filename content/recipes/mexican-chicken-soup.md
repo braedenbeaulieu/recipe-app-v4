@@ -3,7 +3,7 @@ title: Mexican Chicken Soup
 description: This is good!
 thumbnail: /img/mexican-chicken-soup.webp
 thumbnail_alt: Mexican Chicken Soup
-tags: ['Mexican', 'Soup', 'Instant Pot']
+tags: ['Soup', 'Instant Pot']
 servings: 8
 prep_time: 10
 cook_time: 300

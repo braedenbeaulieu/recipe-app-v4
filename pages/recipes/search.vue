@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-xl mx-auto">
         <RecipeSearch @search="search_recipes" />
-        <div v-if="pending">
+        <div v-if="pending_recipes">
             <div class="animate-pulse mx-4 h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mt-6 mb-4"></div>
             <div class="grid grid-cols-1 divide-y divide-gray-400">
                 <div v-for="index in 6" :key="index" role="status" class="py-1 sm:py-4 px-3 flex items-center space-y-4 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center">
@@ -23,34 +23,30 @@
         </div>
         <div v-else>
             <div v-if="Array.isArray(recipes)">
-                <ClientOnly>
-                    <h2 class="text-xl font-bold mb-3 mx-3 text-light">{{ search_subtitle }}</h2>
-                </ClientOnly>
-                <ContentList path="/recipes" v-slot="{ list }">
-                    <div class="grid grid-cols-1 divide-y divide-gray-200">
-                        <NuxtLink v-for="recipe in list" :key="recipe._path" :to="recipe._path">
-                            <div class="my-1 py-2 sm:py-4 hover:bg-[#dedcd9] rounded-2xl px-3 flex items-center space-x-4 transition-colors">
-                                <div class="flex-shrink-0" v-if="recipe.thumbnail">
-                                    <img class="w-12 h-12 rounded-full" :src="recipe.thumbnail" :alt="recipe.thumbnail_alt">
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-md font-medium text-gray-900 truncate" v-html="recipe.title"></p>
-                                    <div class="text-sm text-gray-500 truncate flex gap-2 divide-x divide-gray-500">
-                                        <p v-if="recipe.prep_time || recipe.cook_time">Time: {{ resolve_minutes(recipe) }}</p>
-                                        <p class="pl-2" v-if="recipe.oven_temp">Oven: {{ recipe.oven_temp }}°F</p>
-                                        <p class="pl-2" v-if="recipe.servings">Servings: {{ recipe.servings }}</p>
-                                    </div>
-                                </div>
-                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                        <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                    </svg>
+                <h2 class="text-xl font-bold mb-3 mx-3 text-light">Found {{ recipes.length }} recipes.</h2>
+                <div class="grid grid-cols-1 divide-y divide-gray-200">
+                    <NuxtLink v-for="recipe in recipes" :key="recipe._path" :to="recipe._path">
+                        <div class="my-1 py-2 sm:py-4 hover:bg-[#dedcd9] rounded-2xl px-3 flex items-center space-x-4 transition-colors">
+                            <div class="flex-shrink-0" v-if="recipe.thumbnail">
+                                <img class="w-12 h-12 rounded-full" :src="recipe.thumbnail" :alt="recipe.thumbnail_alt">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-md font-medium text-gray-900 truncate" v-html="recipe.title"></p>
+                                <div class="text-sm text-gray-500 truncate flex gap-2 divide-x divide-gray-500">
+                                    <p v-if="recipe.prep_time || recipe.cook_time">Time: {{ resolve_minutes(recipe) }}</p>
+                                    <p class="pl-2" v-if="recipe.oven_temp">Oven: {{ recipe.oven_temp }}°F</p>
+                                    <p class="pl-2" v-if="recipe.servings">Servings: {{ recipe.servings }}</p>
                                 </div>
                             </div>
-                        </NuxtLink>
-                    </div>
-                </ContentList>
+                            <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </NuxtLink>
+                </div>
             </div>
             <div v-else>
                 <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-if="!search_term">No recipes found.</h2>
@@ -66,7 +62,7 @@
     })
 
     const route = useRoute()
-    let search_term = route.query.s?.toString()
+    let search_term = ref(route.query.search)
 
     // const miniSearchOptions = defineMiniSearchOptions({
     //     fields: ['title', 'description', 'tags']
@@ -78,23 +74,28 @@
     // const { data: recipes, pending } = await useAsyncData('recipes', () => queryContent('/recipes').find())
     // const { data: recipes, pending } = await useAsyncData('recipes', () => queryContent('recipes').where({
     //     $or: [
-    //         title: { $regex: `/${search_term.value}/ig` }, 
-    //         description: { $regex: `/${search_term.value}/ig` }
+    //         title: { $regex: `/${search_term}/ig` }, 
+    //         description: { $regex: `/${search_term}/ig` }
     //     ]
     // }))
-    const { data: recipes, pending } = await useAsyncData('recipes', () => queryContent('recipes').where({ title: { $eq: search_term } }).find())
-
-    // const refresh = () => refreshNuxtData('recipes')
+    const { data: recipes, pending: pending_recipes } = await useAsyncData('recipes', () => {
+        return queryContent('recipes')
+            // .where({ title: `/.*${search_term.value?.toString()}.*/` })
+            .where({ title: search_term.value?.toString() })
+            .where({ _draft: false })
+            .find()
+    })
+    const refresh = () => refreshNuxtData('recipes')
     
     let search_recipes = async (query: string) => {
-        search_term = query
+        search_term.value = query
         await refresh()
         get_search_subtitle()
     }
 
     let search_subtitle = ref('')
     let get_search_subtitle = () => {
-        if(!recipes.value || !recipes.value.length) {
+        if(!recipes) {
             if(search_term.value != '' && search_term.value != undefined) {
                 search_subtitle.value = `No recipes found for ${search_term.value}`
             } else {
@@ -103,8 +104,8 @@
             return
         }
 
-        if(search_term.value != '' && search_term.value != undefined) {
-            search_subtitle.value = `Found ${recipes.value.length} recipes for ${search_term.value}`
+        if(search_term.value != '' && search_term.value != undefined && Array.isArray(recipes)) {
+            search_subtitle.value = `Found ${recipes.length} recipes for ${search_term.value}`
         } else {
             search_subtitle.value = ''
         }
