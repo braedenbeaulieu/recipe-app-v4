@@ -30,8 +30,8 @@ declare global {
     }
 
     interface Ingredient {
-        qty: string,
-        unit: string,
+        qty?: string,
+        unit?: string,
         name: string,
         modifier?: string
     }
