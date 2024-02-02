@@ -3,7 +3,6 @@ title: 'Pulled Pork'
 description: This is good!
 thumbnail: /img/pulled-pork.jpg
 thumbnail_alt: Pulled Pork
-tags: ['']
 servings: 6
 prep_time: 15
 cook_time: 300
@@ -42,7 +41,6 @@ ingredients:
     - qty: 1
       unit: tsp.
       name: Onion Powder
-      modifier: chopped
     - qty: 6
       unit: 
       name: Kaiser Rolls
