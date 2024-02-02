@@ -173,26 +173,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center mt-8 mb-2 mx-[50px] md:ml-0">
-                        <h3 class="text-2xl font-bold">Ingredients</h3>
+                    <div v-if="recipe.ingredients && Array.isArray(recipe.ingredients)">
+                        <div class="flex justify-between items-center mt-8 mb-2 mx-[50px] md:ml-0">
+                            <h3 class="text-2xl font-bold">Ingredients</h3>
+                        </div>
+                        <ul class="mb-2 ml-12 md:ml-0">
+                            <li class="leading-8" v-for="ingredient in recipe.ingredients" :key="ingredient.name" :data-initial-value="ingredient.qty">
+                                <p>{{ `${resolveIngredientQty(ingredient.qty)} ${ingredient.unit ? ingredient.unit : ''} ${ingredient.name}` }}<span class="italic" v-if="ingredient.modifier">, {{ ingredient.modifier }}</span></p>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="mb-2 ml-12 md:ml-0">
-                        <li class="leading-8" v-for="ingredient in recipe.ingredients" :key="ingredient.name" :data-initial-value="ingredient.qty">
-                            <p>{{ `${resolveIngredientQty(ingredient.qty)} ${ingredient.unit} ${ingredient.name}` }}<span v-if="ingredient.modifier">, {{ ingredient.modifier }}</span></p>
-                        </li>
-                    </ul>
                 </div>
                 <div>
                     <div class="mb-8 ml-12" v-if="recipe.cooks_note">
                         <h3 class="text-2xl mb-2 font-bold">Cook's Note</h3>
                         <p class="">{{ recipe.cooks_note }}</p>
                     </div>
-
-                    <h3 class="text-2xl md:mt-0 mb-2 font-bold ml-[50px]">Directions</h3>
-                    <div class="mb-8" >
-                        <div class="flex mb-4" v-for="(direction, index) in recipe.directions" :key="index">
-                            <span class="block text-4xl font-bold w-[50px]">{{ index + 1 }}.</span>
-                            <p @click="maybeDisplayIngredient" class="leading-8 mb-1 w-a w-[calc(100%_-_50px)]" v-html="resolveDirection(direction)"></p>
+                    <div v-if="recipe.directions && Array.isArray(recipe.directions)">
+                        <h3 class="text-2xl md:mt-0 mb-2 font-bold ml-[50px]">Directions</h3>
+                        <div class="mb-8" >
+                            <div class="flex mb-4" v-for="(direction, index) in recipe.directions" :key="index">
+                                <span class="block text-4xl font-bold w-[50px]">{{ index + 1 }}.</span>
+                                <p @click="maybeDisplayIngredient" class="leading-8 mb-1 w-a w-[calc(100%_-_50px)]" v-html="resolveDirection(direction)"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
