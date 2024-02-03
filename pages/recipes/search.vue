@@ -23,7 +23,8 @@
         </div>
         <div v-else>
             <div v-if="Array.isArray(recipes)">
-                <h2 class="text-xl font-bold mb-3 mx-3 text-light">Found {{ recipes.length }} recipes.</h2>
+                <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-if="recipes.length > 0">Found {{ recipes.length }} recipe{{ recipes.length !== 1 ? 's' : '' }}.</h2>
+                <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-else>Search for a recipe 👆.</h2>
                 <div class="grid grid-cols-1 divide-y divide-gray-200">
                     <NuxtLink v-for="recipe in recipes" :key="recipe._path" :to="recipe._path">
                         <div class="my-1 py-2 sm:py-4 hover:bg-[#dedcd9] rounded-2xl px-3 flex items-center space-x-4 transition-colors">

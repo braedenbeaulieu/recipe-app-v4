@@ -34,9 +34,9 @@
     
         router.push({
             path: '/recipes/search',
-            query: { s: search_query.value },
+            query: { search: search_query.value },
         })
-        emit('search', search_query.value)
+        // emit('search', search_query.value)
     }
 
     let randomizer = async () => {

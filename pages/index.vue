@@ -1,8 +1,5 @@
 <template>
     <div>
-        <!-- <div v-if="featured_recipe.hasOwnProperty('title')">
-            <FeaturedRecipe v-if="featured_recipe" :recipe="featured_recipe" />
-        </div> -->
         <div class="mx-auto max-w-[470px]">
             <RecipeSearch />
         </div>
@@ -37,6 +34,4 @@
       titleTemplate: '%s - Home',
     })
     const { data: recipes, pending: pending_recipes } = await useAsyncData('recipes', () => queryContent('recipes').where({_draft: false}).find())
-    // const { data: recipes, pending: pending_recipes } = await useFetch('/api/recipes?img_size=large')
-    // const { data: featured_recipe, pending: pending_featured_recipe } = await useFetch('/api/recipes/featured?img_size=full')
 </script>
