@@ -36,7 +36,7 @@ ingredients:
       name: Cumin
       
 directions:
-    - 'Rib Rub: Mix the rub ingredients together then completely coat the ribs and wrap them up with aluminum foil, with the flat meaty side down.'
+    - Mix the rub ingredients together then completely coat the ribs and wrap them up with aluminum foil, with the flat meaty side down.
     - Put the ribs in the oven on the middle rack for 3 hours or until they feel loosely attached to the bone then pull them out of the oven and turn it onto Hi Broil.
     - Open the foil package completely and cover the bottom of the ribs with some of your BBQ sauce. Then place them back under the broiler until the sauce looks slightly caramelized. Then take them out and carefully flip the ribs without pulling them apart and do the same thing on the top side, this time pay attention to let the sauce caramelize perfectly without burning it. Chop them into smaller pieces and serve.
 ---
