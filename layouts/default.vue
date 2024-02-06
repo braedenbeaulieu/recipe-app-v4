@@ -1,3 +1,6 @@
+<script>
+    import { SpeedInsights } from '@vercel/speed-insights/vue';
+</script>
 <template>
     <div class="overflow-hidden relative min-h-screen">
         <Header />
@@ -5,6 +8,7 @@
             <slot />
         </div>
     </div>
+    <SpeedInsights />
 </template>
 
 <style>
