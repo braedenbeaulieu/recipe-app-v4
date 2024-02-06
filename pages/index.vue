@@ -13,8 +13,8 @@
                         class="rounded-lg object-cover w-full h-full"
                         :src="recipe.thumbnail"
                         :alt="recipe.thumbnail_alt"
-                        width="520"
-                        height="400"
+                        width="700"
+                        height="538"
                     />
                 </div>
                 <div class="absolute inset-0 p-2 md:p-4 text-white flex flex-col">

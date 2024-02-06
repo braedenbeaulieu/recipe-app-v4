@@ -124,8 +124,8 @@
                         <CldImage
                             :src="recipe.thumbnail"
                             :alt="recipe.thumbnail_alt"
-                            width="864"
-                            height="600"
+                            width="1000"
+                            height="884"
                         />
                     </div>
                     <h1 class="text-4xl my-4 font-bold text-center md:text-left">{{ recipe.title }}</h1>
