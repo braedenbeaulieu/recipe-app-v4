@@ -3,7 +3,8 @@ export default defineNuxtConfig({
     modules: [
         '@vueuse/nuxt',
         '@nuxt/content',
-        '@nuxthq/studio'
+        '@nuxthq/studio',
+        '@nuxtjs/cloudinary'
     ],
     typescript: {
         shim: false

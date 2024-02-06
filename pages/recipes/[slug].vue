@@ -121,7 +121,12 @@
             <div class="grid md:grid-cols-2 gap-8 text-black">
                 <div>
                     <div class="object-cover rounded-2xl max-h-[500px] overflow-hidden shadow-xl">
-                        <img :src="recipe.thumbnail" :alt="recipe.thumbnail_alt">
+                        <CldImage
+                            :src="recipe.thumbnail"
+                            :alt="recipe.thumbnail_alt"
+                            width="864"
+                            height="600"
+                        />
                     </div>
                     <h1 class="text-4xl my-4 font-bold text-center md:text-left">{{ recipe.title }}</h1>
                     <div class="mt-auto flex flex-wrap mb-4">

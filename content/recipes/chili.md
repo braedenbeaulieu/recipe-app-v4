@@ -1,7 +1,7 @@
 ---
 title: 'Chili'
 description: This is good!
-thumbnail: /img/chili.jpeg
+thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178392/Recipe%20Images/chili_dfpufn.jpg
 thumbnail_alt: Chili
 tags: ['Chunky']
 servings: 6

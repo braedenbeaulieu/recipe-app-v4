@@ -1,7 +1,7 @@
 ---
 title: Mexican Chicken Soup
 description: This is good!
-thumbnail: /img/mexican-chicken-soup.webp
+thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178392/Recipe%20Images/mexican-chicken-soup_hfoww3.webp
 thumbnail_alt: Mexican Chicken Soup
 tags: ['Soup', 'Instant Pot']
 servings: 8
