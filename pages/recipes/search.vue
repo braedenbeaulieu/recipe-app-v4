@@ -29,7 +29,13 @@
                     <NuxtLink v-for="recipe in recipes" :key="recipe._path" :to="recipe._path">
                         <div class="my-1 py-2 sm:py-4 hover:bg-[#dedcd9] rounded-2xl px-3 flex items-center space-x-4 transition-colors">
                             <div class="flex-shrink-0" v-if="recipe.thumbnail">
-                                <img class="w-12 h-12 rounded-full" :src="recipe.thumbnail" :alt="recipe.thumbnail_alt">
+                                <CldImage
+                                    class="w-12 h-12 rounded-full"
+                                    :src="recipe.thumbnail"
+                                    :alt="recipe.thumbnail_alt"
+                                    width="160"
+                                    height="160"
+                                />
                             </div>
                             <div class="flex-1 min-w-0">
                                 <p class="text-md font-medium text-gray-900 truncate" v-html="recipe.title"></p>

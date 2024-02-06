@@ -9,7 +9,13 @@
                 class="relative before:content-[''] before:rounded-md before:absolute before:inset-0 before:bg-black before:bg-opacity-20"
             >
                 <div class="h-64">
-                    <img class="rounded-lg object-cover w-full h-full" :src="recipe.thumbnail" :alt="recipe.thumbnail_alt" />
+                    <CldImage
+                        class="rounded-lg object-cover w-full h-full"
+                        :src="recipe.thumbnail"
+                        :alt="recipe.thumbnail_alt"
+                        width="520"
+                        height="400"
+                    />
                 </div>
                 <div class="absolute inset-0 p-2 md:p-4 text-white flex flex-col">
                     <div class="relative bg-black/50 shadow-lg p-2 rounded-md">
