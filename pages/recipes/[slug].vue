@@ -19,7 +19,7 @@
         if(rhours > 0) {
             time = `${rhours}h`
             if(minutes > 0) {
-                time += `${rminutes}m`
+                time += ` ${rminutes}m`
             }
         }
 
