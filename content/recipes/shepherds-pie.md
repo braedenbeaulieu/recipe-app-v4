@@ -1,7 +1,7 @@
 ---
 title: Shepherd's Pie
 description: This is good!
-thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178392/Recipe%20Images/shepherds-pie_r2wfoz.jpg
+thumbnail: Recipe Images/shepherds-pie_r2wfoz
 thumbnail_alt: Shepherd's Pie
 tags: []
 servings: 6

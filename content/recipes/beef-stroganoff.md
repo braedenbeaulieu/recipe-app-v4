@@ -1,7 +1,7 @@
 ---
 title: 'Beef Stroganoff'
 description: This is good!
-thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178392/Recipe%20Images/beef-stroganoff_g0q8rz.webp
+thumbnail: Recipe Images/beef-stroganoff_g0q8rz
 thumbnail_alt: Beef Stroganoff
 tags: ['Instant Pot', 'Soup']
 servings: 6

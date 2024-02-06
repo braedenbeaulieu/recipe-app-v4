@@ -1,7 +1,7 @@
 ---
 title: 'Pulled Pork'
 description: This is good!
-thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178392/Recipe%20Images/pulled-pork_emtupd.jpg
+thumbnail: Recipe Images/pulled-pork_emtupd
 thumbnail_alt: Pulled Pork
 servings: 6
 prep_time: 15

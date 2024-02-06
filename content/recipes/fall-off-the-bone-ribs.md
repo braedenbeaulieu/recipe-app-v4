@@ -1,7 +1,7 @@
 ---
 title: Fall Off the Bone Ribs
 description: This is good!
-thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178394/Recipe%20Images/fall-off-the-bone-ribs_tlmpmd.jpg
+thumbnail: Recipe Images/fall-off-the-bone-ribs_tlmpmd
 thumbnail_alt: Fall Off the Bone Ribs
 tags: []
 servings: 6

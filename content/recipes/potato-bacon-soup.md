@@ -1,7 +1,7 @@
 ---
 title: Potato Bacon Soup
 description: This is good!
-thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178392/Recipe%20Images/potato-bacon-soup_tadvun.jpg
+thumbnail: Recipe Images/potato-bacon-soup_tadvun
 thumbnail_alt: Potato Bacon Soup
 tags: []
 servings: 8

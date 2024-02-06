@@ -1,7 +1,7 @@
 ---
 title: 'Taco Dip'
 description: This is good!
-thumbnail: https://res.cloudinary.com/dn1ni2vaf/image/upload/v1707178392/Recipe%20Images/taco-dip_lrsywd.jpg
+thumbnail: Recipe Images/taco-dip_lrsywd
 thumbnail_alt: Taco Dip
 tags: ['Party']
 servings: 6
