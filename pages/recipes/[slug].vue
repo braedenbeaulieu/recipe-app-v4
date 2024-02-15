@@ -70,7 +70,7 @@
 
         notification_open.value = true
         notification_title.value = ingredient.name ? ingredient.name : ''
-        notification_message.value = `${ingredient.qty} ${ingredient.unit} ${ingredient.name}`
+        notification_message.value = `${ingredient.qty ? ingredient.qty : ''} ${ingredient.unit ? ingredient.unit : ''} ${ingredient.name}`
         if(ingredient.modifier) notification_message.value += `, <span v-if="ingredient.modifier">${ingredient.modifier}</span>`
         const runTimer = (duration: number) => {
             timer = setTimeout(() => {
