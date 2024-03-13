@@ -67,6 +67,11 @@
     useHead({
         titleTemplate: '%s - Search',
     })
+    useSeoMeta({
+        ogTitle: `Recipedia - Search`,
+        description: 'Search recipes.',
+        ogDescription: 'Search recipes.',
+    })
 
     const route = useRoute()
     let search_term = ref(route.query.search)

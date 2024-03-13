@@ -1,6 +1,12 @@
 <script setup lang="ts">
     const { slug } = useRoute().params
     const { data: recipe } = await useAsyncData('recipe', () => queryContent(`/recipes/${slug}`).findOne())
+
+    useSeoMeta({
+        ogTitle: `Recipedia - ${recipe.value?.title}`,
+        description: 'Cook excellent meals at home using simple recipes like this one.',
+        ogDescription: 'Cook excellent meals at home using simple recipes like this one.',
+    })
     
     let all_ingredients = ref(recipe.value?.ingredients)
 
@@ -117,6 +123,12 @@
 </script>
 <template>
     <article>
+        <Head v-if="recipe">
+            <CldOgImage
+                :src="recipe.thumbnail"
+            />
+        </Head>
+
         <ContentRenderer v-if="recipe" :value="recipe">
             <div class="grid md:grid-cols-2 gap-8 text-black">
                 <div>
@@ -124,8 +136,8 @@
                         <CldImage
                             :src="recipe.thumbnail"
                             :alt="recipe.thumbnail_alt"
-                            width="1200"
-                            height="923"
+                            width="700"
+                            height="538"
                         />
                     </div>
                     <h1 class="text-4xl my-4 font-bold text-center md:text-left">{{ recipe.title }}</h1>
