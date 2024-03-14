@@ -3,7 +3,8 @@ title: Baguette Dough
 description: This is good!
 thumbnail: Recipe Images/fall-off-the-bone-ribs_tlmpmd
 thumbnail_alt: Baguette Dough
-tags: [dough]
+tags:
+  - dough
 servings: 6
 prep_time: 30
 cook_time: 20
@@ -31,5 +32,6 @@ directions:
   - Add the Sea Salt and continue kneading
   - Once it is tacky and holding its shape you can knead it on lightly floured surface. Knead for at least 10 minutes, then form a big dough ball
   - Let rest for 1-2 hours, then place in the fridge overnight with plastic wrap over the bowl
-  - On the next day leave the dough out almost long enough to come to room temperature then you can section the dough into 150g to 250g chunks which should be rolled immediately
+  - On the next day leave the dough out almost long enough to come to room temperature then you can section the dough into 200g to 300g chunks which should be rolled immediately
+  - Roll the dough into baguettes, score the top of each baguette and lightly flour them before putting in the oven at 425°F. Get a second sheet pan hot in the oven, then pour water into it to create steam in the oven
 ---
