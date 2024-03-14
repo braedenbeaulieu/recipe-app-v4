@@ -2,10 +2,19 @@
     const { slug } = useRoute().params
     const { data: recipe } = await useAsyncData('recipe', () => queryContent(`/recipes/${slug}`).findOne())
 
+    let recipe_thumbnail = recipe.value?.thumbnail.replaceAll('Recipe Images', 'Recipe%20Images')
+    const image = useImage()
+    let recipe_img_url = image(recipe_thumbnail, { width: 1000 })
+
     useSeoMeta({
-        ogTitle: `Recipedia - ${recipe.value?.title}`,
         description: 'Cook excellent meals at home using simple recipes like this one.',
+        ogTitle: `Recipedia - ${recipe.value?.title}`,
+        ogImage: recipe_img_url,
+        ogImageAlt: recipe.value?.title,
         ogDescription: 'Cook excellent meals at home using simple recipes like this one.',
+        twitterCard: 'summary_large_image',
+        twitterImage: recipe_img_url,
+        twitterImageAlt: recipe.value?.title,
     })
     
     let all_ingredients = ref(recipe.value?.ingredients)
@@ -123,22 +132,11 @@
 </script>
 <template>
     <article>
-        <Head v-if="recipe">
-            <CldOgImage
-                :src="recipe.thumbnail"
-            />
-        </Head>
-
         <ContentRenderer v-if="recipe" :value="recipe">
             <div class="grid md:grid-cols-2 gap-8 text-black">
                 <div>
-                    <div class="object-cover rounded-2xl max-h-[500px] overflow-hidden shadow-xl">
-                        <CldImage
-                            :src="recipe.thumbnail"
-                            :alt="recipe.thumbnail_alt"
-                            width="700"
-                            height="538"
-                        />
+                    <div class="rounded-2xl max-h-[300px] overflow-hidden shadow-xl">
+                        <NuxtImg provider="cloudinary" :src="recipe.thumbnail" width="1000" class="object-center object-cover" />
                     </div>
                     <h1 class="text-4xl my-4 font-bold text-center md:text-left">{{ recipe.title }}</h1>
                     <div class="mt-auto flex flex-wrap mb-4">

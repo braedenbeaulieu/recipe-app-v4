@@ -4,7 +4,8 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@nuxt/content',
         '@nuxthq/studio',
-        '@nuxtjs/cloudinary'
+        '@nuxtjs/cloudinary',
+        '@nuxt/image',
     ],
     typescript: {
         shim: false
@@ -37,6 +38,16 @@ export default defineNuxtConfig({
         highlight: {
           // Theme used in all color schemes.
           theme: 'github-light'
+        }
+    },
+    image: {
+        provider: 'cloudinary',
+        cloudinary: {
+            baseURL: 'https://res.cloudinary.com/dn1ni2vaf/image/upload/',
+            // modifiers: {
+            //     effect: 'sharpen:100',
+            //     quality: 'auto:best',
+            // }
         }
     }
 })

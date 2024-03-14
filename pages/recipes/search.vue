@@ -27,17 +27,16 @@
                 <h2 class="text-xl font-bold mb-3 mx-3 text-light" v-else>Search for a recipe 👆</h2>
                 <div class="grid grid-cols-1 divide-y divide-gray-200">
                     <NuxtLink v-for="recipe in recipes" :key="recipe._path" :to="recipe._path">
-                        <div class="my-1 py-2 sm:py-4 hover:bg-[#dedcd9] rounded-2xl px-3 flex items-center space-x-4 transition-colors">
-                            <div class="flex-shrink-0" v-if="recipe.thumbnail">
-                                <CldImage
-                                    class="w-12 h-12 rounded-full"
+                        <div class="my-1 py-2 sm:py-4 hover:bg-[#dedcd9] rounded-2xl px-3 flex items-center transition-colors group">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden" v-if="recipe.thumbnail">
+                                <NuxtImg
+                                    class="w-100 h-100 group-hover:scale-125 transition-transform"
                                     :src="recipe.thumbnail"
                                     :alt="recipe.thumbnail_alt"
-                                    width="160"
-                                    height="160"
+                                    width="100"
                                 />
                             </div>
-                            <div class="flex-1 min-w-0">
+                            <div class="flex-1 min-w-0 ml-4">
                                 <p class="text-md font-medium text-gray-900 truncate" v-html="recipe.title"></p>
                                 <div class="text-sm text-gray-500 truncate flex gap-2 divide-x divide-gray-500">
                                     <p v-if="recipe.prep_time || recipe.cook_time">Time: {{ resolve_minutes(recipe) }}</p>
@@ -45,8 +44,8 @@
                                     <p class="pl-2" v-if="recipe.servings">Servings: {{ recipe.servings }}</p>
                                 </div>
                             </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                            <div class="text-base font-semibold text-gray-900 -translate-x-2 group-hover:translate-x-0 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
                                     <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>

@@ -4,23 +4,25 @@
             <RecipeSearch />
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
-            <NuxtLink 
-                v-for="recipe in recipes" :key="recipe._path" :to="recipe._path"
-                class="relative before:content-[''] before:rounded-md before:absolute before:inset-0 before:bg-black before:bg-opacity-20"
-            >
-                <div class="h-64">
-                    <CldImage
-                        class="rounded-lg object-cover w-full h-full"
-                        :src="recipe.thumbnail"
-                        :alt="recipe.thumbnail_alt"
-                        width="700"
-                        height="538"
-                    />
-                </div>
-                <div class="absolute inset-0 p-2 md:p-4 text-white flex flex-col">
-                    <div class="relative bg-black/50 shadow-lg p-2 rounded-md">
-                        <h1 class="text-lg md:text-3xl font-bold" v-html="recipe.title"></h1>
+            <div v-for="recipe in recipes" :key="recipe._path">
+                <NuxtLink 
+                    :to="recipe._path"
+                    class="relative before:content-[''] before:rounded-md before:absolute before:inset-0 before:bg-black before:bg-opacity-20"
+                >
+                    <div class="h-48 md:h-64">
+                        <NuxtImg
+                            class="rounded-lg object-cover w-full h-full"
+                            :src="recipe.thumbnail"
+                            :alt="recipe.thumbnail_alt"
+                            width="700"
+                            height="auto"
+                        />
                     </div>
+                </NuxtLink>
+                <div class="py-2 text-black flex flex-col">
+                    <NuxtLink to="recipe._path" class="mb-2">
+                        <h2 class="text-2xl md:text-3xl font-bold" v-html="recipe.title"></h2>
+                    </NuxtLink>
                     <div class="mt-auto flex flex-wrap -mb-1">
                         <p
                             v-for="tag in recipe.tags" :key="recipe.id"
@@ -30,7 +32,7 @@
                         </p>
                     </div>
                 </div>
-            </NuxtLink>
+            </div>
         </div>
     </div>
 </template>
