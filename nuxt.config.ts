@@ -28,6 +28,18 @@ export default defineNuxtConfig({
                     'charset': 'utf-8'
                 }
             ],
+            link: [
+                {
+                    rel: 'icon',
+                    type: 'image/svg+xml',
+                    href: '/favicon.svg'
+                },
+                {
+                    rel: 'icon',
+                    type: 'image/png',
+                    href: '/favicon.png'
+                },
+            ],
             title: 'Recipedia',
         },
         pageTransition: { 
