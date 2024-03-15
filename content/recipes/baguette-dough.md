@@ -1,7 +1,7 @@
 ---
 title: Baguette Dough
 description: This is good!
-thumbnail: Recipe Images/fall-off-the-bone-ribs_tlmpmd
+thumbnail: Recipe Images/baguettes_f4ywdv
 thumbnail_alt: Baguette Dough
 tags:
   - dough
