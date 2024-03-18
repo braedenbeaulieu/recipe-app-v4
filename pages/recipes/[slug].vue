@@ -135,8 +135,8 @@
         <ContentRenderer v-if="recipe" :value="recipe">
             <div class="grid md:grid-cols-2 gap-8 text-black">
                 <div>
-                    <div class="rounded-2xl max-h-[300px] overflow-hidden shadow-xl">
-                        <NuxtImg provider="cloudinary" :src="recipe.thumbnail" width="1000" class="object-center object-cover" />
+                    <div class="rounded-2xl h-[300px] overflow-hidden shadow-xl">
+                        <NuxtImg provider="cloudinary" :src="recipe.thumbnail" width="1000" class="object-cover h-full w-full" />
                     </div>
                     <h1 class="text-4xl my-4 font-bold text-center md:text-left">{{ recipe.title }}</h1>
                     <div class="mt-auto flex flex-wrap mb-4">

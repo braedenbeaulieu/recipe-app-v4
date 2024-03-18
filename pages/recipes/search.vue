@@ -30,10 +30,10 @@
                         <div class="my-1 py-2 sm:py-4 hover:bg-[#dedcd9] rounded-2xl px-3 flex items-center transition-colors group">
                             <div class="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden" v-if="recipe.thumbnail">
                                 <NuxtImg
-                                    class="w-100 h-100 group-hover:scale-125 transition-transform"
+                                    class="w-full h-full object-cover group-hover:scale-125 transition-transform"
                                     :src="recipe.thumbnail"
                                     :alt="recipe.thumbnail_alt"
-                                    width="100"
+                                    width="200"
                                 />
                             </div>
                             <div class="flex-1 min-w-0 ml-4">
