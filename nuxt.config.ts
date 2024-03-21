@@ -1,5 +1,9 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+    routeRules: {
+        '/': { isr: true },
+        '/recipes/**': { isr: true },
+    },
     modules: [
         '@vueuse/nuxt',
         '@nuxt/content',
