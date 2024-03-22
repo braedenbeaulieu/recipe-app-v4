@@ -1,53 +1,51 @@
 ---
-title: 'Chili'
+title: Chili
 description: This is good!
-thumbnail: Recipe Images/chili_dfpufn
+thumbnail: Recipe Images/chili_pe6btg
 thumbnail_alt: Chili
-tags: ['Chunky']
 servings: 6
-prep_time: 5
-cook_time: 45
-cooks_note:
+prep_time: 10
+cook_time: 60
+cooks_note: For Chili Seasoning mix Cumin, Chili Powder, Onion Powder, Garlic Powder, Paprika, Oregano, and some Salt and Pepper
 ingredients:
-    - qty: 1
-      unit: lb.
-      name: Ground Beef
-    - qty: 1
-      unit: litre
-      name: Beef Stock
-      modifier: or chicken stock
-    - qty: 2
-      unit: tbsp
-      name: Olive Oil
-    - qty: 1
-      unit: medium sized
-      name: Onion
-      modifier: diced
-    - qty: 2
-      unit: cloves
-      name: Garlic
-    - qty: .5
-      unit: can
-      name: Tomato Paste
-    - qty: 1
-      unit: can
-      name: Diced Tomatoes
-    - qty: 1
-      unit: can
-      name: Red Kidney Beans
-      modifier: drained & rinsed
-    - qty: 1
-      unit: can
-      name: Tomato Sauce
-      modifier: drained & rinsed
-    - qty: 1
-      unit: packette
-      name: Chili Seasoning
-      modifier: or taco seasoning
-      
+  - qty: 2
+    unit: lb.
+    name: Ground Beef
+  - qty: 2
+    unit: litres
+    name: Chicken Stock
+    modifier: or Beef Stock
+  - qty: 2
+    unit: tbsp
+    name: Olive Oil
+  - qty: 1
+    unit: medium sized
+    name: Onion
+    modifier: diced
+  - qty: 4
+    unit: cloves
+    name: Garlic
+  - qty: 1
+    unit: can
+    name: Tomato Paste
+  - qty: 1
+    unit: can
+    name: Diced Tomatoes
+  - qty: 4
+    unit: medium
+    name: Cremini Mushrooms
+    modifier: cut into chunks
+  - qty: 1
+    unit: can
+    name: Black Beans
+    modifier: drained & rinsed
+  - qty: 1
+    unit: packette
+    name: Chili Seasoning
+    modifier: or taco seasoning
 directions:
-    - Add the Olive Oil to a dutch oven and place it over medium-high heat for two minutes. Add the Onion. Cook for 5 minutes, stirring occasionally. Add the Garlic once the onions are translucent and cook for another 2 minutes.
-    - Add the Ground Beef to the pot. Break it apart with a wooden spoon. Cook for 6-7 minutes, until the beef is browned, stirring occasionally. Then add the Chili Seasoning with a 3/4 cup of water.
-    - Add the Beef Stock, Diced Tomatoes (with their juice), Red Kidney Beans(drained and rinsed), and Tomato Sauce. Stir well.
-    - Bring the liquid to a low boil. Then, reduce the heat and gently simmer the chili uncovered,  stirring occasionally. Add salt and pepper to taste, then serve.
+  - Add the Olive Oil to a dutch oven and sauté the Onion until it's soft then add the Garlic.
+  - Add the Ground Beef to the pot and cook until the beef is almost browned. Then add the Chili Seasoning.
+  - Stir these ingredients for a sec one at a time in this order. Tomato Paste, Cremini Mushrooms, Black Beans, Diced Tomatoes (with their juice), Chicken Stock.
+  - Simmer the chili until it's thick enough
 ---
