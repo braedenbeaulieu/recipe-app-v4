@@ -7,8 +7,8 @@ tags: []
 servings: 6
 prep_time: 10
 cook_time: 190
-oven_temp: 290
-cooks_note: Start by preheating the oven to 290°F.
+oven_temp: 300
+cooks_note: Start by preheating the oven to 300°F.
 ingredients:
   - qty: 1
     unit: rack
@@ -36,6 +36,6 @@ ingredients:
     name: Cumin
 directions:
   - Mix the rub ingredients together then completely coat the ribs and wrap them up with aluminum foil, with the flat meaty side down.
-  - Put the ribs in the oven on the middle rack for 3 hours or until they feel loosely attached to the bone then pull them out of the oven and turn it onto Hi Broil.
+  - Put the ribs in the oven on the middle rack for 3 hours or until they feel loosely attached to the bone then pull them out of the oven and turn the broiler on high.
   - Open the foil package completely and cover the bottom of the ribs with some of your BBQ sauce. Then place them back under the broiler until the sauce looks slightly caramelized. Then take them out and carefully flip the ribs without pulling them apart and do the same thing on the top side, this time pay attention to let the sauce caramelize perfectly without burning it. Chop them into smaller pieces and serve.
 ---
