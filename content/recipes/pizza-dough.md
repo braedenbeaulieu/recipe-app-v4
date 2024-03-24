@@ -1,9 +1,10 @@
 ---
 title: Pizza Dough
 description: This is good!
-thumbnail: Recipe Images/fall-off-the-bone-ribs_tlmpmd
+thumbnail: Recipe Images/pizza_dough_ok45gf
 thumbnail_alt: Pizza Dough
-tags: [dough]
+tags:
+  - dough
 servings: 6
 prep_time: 30
 cook_time: 20
@@ -16,7 +17,7 @@ ingredients:
   - qty: 500
     unit: g
     name: White Flour
-  - qty: 1
+  - qty: 475
     unit: g
     name: Water
   - qty: 10
