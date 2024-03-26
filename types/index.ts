@@ -2,31 +2,20 @@ export { }
 
 declare global {
     interface Recipe {
-        id?: number,
         title?: string,
-        content ?: string,
-        slug?: string,
         description?: string,
-        featured_image?: string,
-        featured_image_alt?: string,
         has_blog?: boolean,
-        is_featured?: boolean,
         tags?: string[],
-        meta?: {
-            video_url?: string|undefined,
-            difficulty?: string|undefined,
-            servings?: string|undefined,
-            prep_time?: string|undefined,
-            cook_time?: string|undefined,
-            total_time?: number|undefined,
-            cooks_note?: string|undefined,
-            oven?: {
-                temp_unit?: string|undefined,
-                temp?: string|undefined,
-            }
-        },
+        servings?: string|undefined,
+        cooks_note?: string|undefined,
+        prep_time?: string|undefined,
+        cook_time?: string|undefined,
+        oven_temp?: string|undefined,
         ingredients?: Ingredient[],
         directions?: String[],
+        _path?: string,
+        thumbnail?: string,
+        thumbnail_alt?: string,
     }
 
     interface Ingredient {

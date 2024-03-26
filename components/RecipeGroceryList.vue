@@ -1,5 +1,5 @@
 <template>
-    <div class="grocery-list bg-black/80 w-full h-screen flex flex-col justify-center items-center">
+    <div class="grocery-list bg-black/80 w-full h-screen flex flex-col justify-center items-center" :class="{open: open}">
         <button @click="closeGroceryList()" class="flex items-center bg-[#1a4e48] border border-black/40 hover:border-[#289e90] text-white hover:text-white inline-flex rounded-lg py-2 px-4 mb-3 shadow-lg hover:shadow-none">Close Grocery List</button>
         <ul class="max-w-xl mx-auto text-sm grid grid-cols-1 divide-y divide-gray-200 font-medium text-gray-900 bg-white rounded-lg border border-gray-200">
             <li 
@@ -20,7 +20,8 @@
 </template>
 <script setup lang="ts">
     const props = defineProps<{
-        ingredients: any[]
+        ingredients: Ingredient[],
+        open: boolean
     }>()
 
     const emit = defineEmits(['close'])

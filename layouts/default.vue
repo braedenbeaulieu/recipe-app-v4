@@ -32,10 +32,6 @@
     html {
         background-color: #ffddb9;
         background-image: linear-gradient(143deg, #f5f3f0 0%, #ffddb9 100%); 
-        /* 
-            background-color: #4158D0;
-            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); 
-        */
     }
 
 	a {
