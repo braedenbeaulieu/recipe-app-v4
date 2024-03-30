@@ -210,6 +210,43 @@
             </div>
             <Notification :open="notification_open" :subtitle="notification_title" :message="notification_message" />
             <RecipeGroceryList :ingredients="recipe.ingredients" :open="grocery_list_open" @close="toggle_grocery_list" />
+            <div class="recipe-content">
+                <ContentRendererMarkdown :value="recipe" />
+            </div>
         </ContentRenderer>
     </article>
 </template>
+
+<style>
+.recipe-content h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+.recipe-content h3 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+.recipe-content h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.recipe-content p {
+    font-size: 16px;
+    font-weight: 400;
+}
+.recipe-content ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
+.recipe-content img {
+    margin-bottom: 16px;
+}
+.recipe-content:empty {
+    display: none;
+}
+</style>
