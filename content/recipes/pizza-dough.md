@@ -33,7 +33,7 @@ ingredients:
   - qty: 0.25
     unit: cup
     name: Vegetable Oil
-  - qty: 20
+  - qty: 15
     unit: g
     name: Sea Salt
 directions:
