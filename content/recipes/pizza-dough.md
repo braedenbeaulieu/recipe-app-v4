@@ -33,12 +33,19 @@ ingredients:
   - qty: 0.25
     unit: cup
     name: Vegetable Oil
-  - qty: 30
+  - qty: 20
     unit: g
     name: Sea Salt
 directions:
-  - Starting with the bowl on a scale, weigh out the Whole Wheat Flour, White Flour, Fresh Yeast OR Dry Instant Yeast and Sugar (everything except the oil and salt) together until the flour is well hydrated
-  - Slowly add the Vegetable Oil and incorperate it into the mixture. Once the Flour is completely hydrated let rest for 5 minutes
-  - Add the Sea Salt and continue kneading, once the dough is tacky and holding its shape you can knead it on a lightly floured surface. Knead for at least 10 minutes, then form a big dough ball
-  - Let rest for 1-2 hours, then section into smaller dough balls and refridgerate or freeze. Weigh dough out to 200g for 10" pizzas, 250g for 12" pizzas
+  - Starting with the bowl on a scale, weigh out the Whole Wheat Flour, White
+    Flour, Water, Fresh Yeast (or Dry Instant Yeast) and Sugar (everything
+    except the oil and salt) together until the flour is well hydrated
+  - Slowly add the Vegetable Oil and incorperate it into the mixture. Once the
+    Flour is completely hydrated let rest for 5 minutes
+  - Add the Sea Salt and continue kneading, once the dough is tacky and holding
+    its shape you can knead it on a lightly floured surface. Knead for at least
+    10 minutes, then form a big dough ball
+  - Let rest for 1-2 hours, then section into smaller dough balls and
+    refridgerate or freeze. Weigh dough out to 200g for 10" pizzas, 250g for 12"
+    pizzas
 ---
